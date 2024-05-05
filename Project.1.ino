@@ -89,8 +89,26 @@ void obAv(){
   int cm = microsecondsToCm(duration);
   //work out what you want it to do here, also check what values the sensor is returning
   if cm < 30{
-    analogWrite(EnA, 0);
-    analogWrite(EnB, 0);
+    if position < 0 {
+    float speedR = (((float(1))+position)*(float(255)));
+    analogWrite(EnA, 122);
+    analogWrite(EnB, (SpeedR/2));
+    }else{
+     float speedL = (((float(1))-position)*(float(255)));
+    analogWrite(EnA, (speedL/2));
+    analogWrite(EnB, 122);
+    }
+  digitalWrite(trigPin, LOW);
+  //need to add in millis delays i think so theres time to for the oulse to travel out and then back
+  digitalWrite(trigPin, HIGH);
+  
+  digitalWrite(trigPin, LOW);
+  
+  int duration2 = {pulseIn(echoPin, HIGH)};
+  int cm2 = microsecondsToCm(duration2);
+  if cm2 < 20 {
+    //find how to get it to recognise the position of the bject between the lines and then you can get it to turn away from it
+  }
   }
 }
 
