@@ -220,9 +220,9 @@ def other_lines(left_boundary, right_boundary, frame, lines, lane_lines):
                         if lower_bound < right_check < upper_bound:
                             other_lines_image = cv2.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
                             #print("horizontal!")
-                    elif len(lane_lines) == 1:
-                        lane_lines.append(make_points(frame, (slope, intercept)))
                     elif len(lane_lines) == 0:
+                        lane_lines.append(make_points(frame, (slope, intercept)))
+                     elif len(lane_lines) == 1:
                         pass
     other_lines_image = cv2.addWeighted(frame, 0.8, other_lines_image, 1, 1)
     return other_lines_image
