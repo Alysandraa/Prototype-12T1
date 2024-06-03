@@ -141,7 +141,7 @@ def find_direction (frame, lane_lines):
     height, width, _ = frame.shape
     #if there are 2 lane lines
     if len(lane_lines) == 2:
-        print("two l;inea")
+        print("two lines")
         _, _, left_x2, _ = lane_lines[0][0]
         _, _, right_x2, _ = lane_lines[1][0]
         if left_x2 < 0:
