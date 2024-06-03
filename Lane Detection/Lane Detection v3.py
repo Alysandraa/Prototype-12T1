@@ -170,19 +170,20 @@ def find_direction (frame, lane_lines):
 def other_lines(left_boundary, right_boundary, frame, lines, lane_lines):
     horizontal_lines = []
     other_lines_image = np.zeros_like(frame)
-    
-    lx1, ly1, lx2, ly2 = lane_lines[0][0]
-
-    rx1, ry1, rx2, ry2 = lane_lines[1][0]
 
     if lines is None:
         print("no line segments detected")
         return lane_lines
     height, width,_ = frame.shape
     if len(lane_lines) == 2:
+        lx1, ly1, lx2, ly2 = lane_lines[0][0]
+        rx1, ry1, rx2, ry2 = lane_lines[1][0]
+        
         left_lane_slope = ((ly2 - ly1)/(lx2 - lx1))
         right_lane_slope = (((ry2 - ry1)/(rx2 - rx1))) 
     elif len(lane_lines) == 1:
+        lx1, ly1, lx2, ly2 = lane_lines[0][0]
+        
         one_line__slope = ((ly2 - ly1)/(lx2 - lx1))
     elif len(lane_lines) == 0:
         return horizontal_lines
