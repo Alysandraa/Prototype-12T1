@@ -222,7 +222,6 @@ cam.set(cv2.CAP_PROP_FRAME_HEIGHT,240)
 
 time.sleep(1)
 
-lastTime = 0
 lastError = 0
 
 while True:
@@ -244,10 +243,6 @@ while True:
     cv2.imshow("Result",direction_image)
     cv2.imshow ("Other lines", other_lines_image)
     #print(position)
-    now = time.time()
-    dt = now - lastTime
-    
-    lastTime = time.time()
     
     key = cv2.waitKey(1)        
     if key != -1:
