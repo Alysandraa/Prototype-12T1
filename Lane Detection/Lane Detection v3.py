@@ -54,8 +54,8 @@ def average_slope_intercept(frame, lines):
     right_fit = []
     
     boundary = 1/3
-    left_boundary = width * (1 - boundary)
-    right_boundary = width * boundary
+    right_boundary = width * (1 - boundary)
+    left_boundary = width * boundary
     
     for line in lines:  
             for x1, y1, x2, y2 in line:
@@ -195,7 +195,6 @@ def other_lines(left_boundary, right_boundary, frame, lines, lane_lines):
                     fit = np.polyfit((x1, x2), (y1, y2), 1)
                     slope = (y2 - y1)/(x2 - x1)
                     intercept = y1 - (slope * x1)
-                    #check if this is right way around and do you need to average these too?
                     if left_boundary > x1 > right_boundary and left_boundary > x2 > right_boundary:
                         left_check = slope - left_lane_slope
                         right_check = slope - right_lane_slope
